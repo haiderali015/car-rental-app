@@ -36,7 +36,7 @@
     }
 
 
-    body {
+    /* body {
         font-family: "Roboto", sans-serif;
         height: 100vh;
         display: flex;
@@ -44,7 +44,7 @@
         justify-content: center;
         background-color: #f8efef;
         cursor:default;
-    }
+    } */
     
     .form-container {
         height: 500px;

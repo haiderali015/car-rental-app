@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginObj : loginUser = new loginUser(); 
-}
+  loginForm: FormGroup = new FormGroup({
+    userName: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
 
-export class loginUser {
-  userName : string;
-  password : string;
-
-  constructor() {
-    this.userName = '';
-    this.password = '';
+router = inject(Router);
+onLogin (){
+  const loginObj = this.loginForm.value;
+  if(loginObj.userName == "Admin" && loginObj.password == "1234"){
+    this.router.navigateByUrl("/layout/dashboard");
+  }else{
+    alert("login details are wrong");
   }
+}
 }
